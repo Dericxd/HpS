@@ -1,0 +1,84 @@
+<div class="center">
+  <section id="content" class="row">
+
+
+    <form class="mid-form" #userForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="nombre"> <strong> Nombre completo</strong> </label>
+        <input type="text" class="form-control" #nombre="ngModel" [(ngModel)]="user.nombre" name="nombre" pattern="[a-zA-Z ]+" required/>
+        <small *ngIf="!nombre.valid && nombre.touched" class="text-danger ">
+          <strong>
+            El nombre no es valido
+          </strong>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="empresa"> <strong> Nombre de la empresa </strong> </label>
+        <input type="text" class="form-control" #empresa="ngModel" [(ngModel)]="user.empresa" name="empresa" pattern="[a-zA-Z0-9 ]+" required/>
+        <small *ngIf="!empresa.valid && empresa.touched" class="text-danger ">
+          <strong>
+            La nombre de la empresa no es valido
+          </strong>
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="email"> <strong> Correo electronico </strong> </label>
+        <input type="email" class="form-control" #email="ngModel" [(ngModel)]="user.email"
+                name="email" required>
+        <small *ngIf="!email.valid && email.touched" class="text-danger ">
+          <strong>
+            El correo no es valido
+          </strong>
+        </small>
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group col">
+          <label for="telefono"> <strong> Telefono </strong> </label>
+          <input type="text" class="form-control" #telefono="ngModel" [(ngModel)]="user.telefono" name="telefono" pattern="[0-9]+" required/>
+          <small *ngIf="!telefono.valid && telefono.touched" class="text-danger ">
+            El telefono no es valido
+          </small>
+        </div>
+
+        <div class="form-group col">
+          <label for="categoria"> <strong> Categoria </strong> </label>
+          <select class="form-control" #categoria="ngModel" [(ngModel)]="user.categoria" name="categoria" required>
+            <option placeholder></option>
+            <option value="informacion">informacion</option>
+            <option value="computadora">computadora</option>
+            <option value="presupuesto">presupuesto</option>
+            <option value="telefono">telefono</option>
+          </select>
+          <small *ngIf="!categoria.valid && categoria.touched" class="text-danger ">
+            <strong>
+              Debe seleccionar una categoria
+            </strong>
+          </small>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="msj"> <strong> Mensaje </strong> </label>
+        <textarea class="form-control" #msj="ngModel" [(ngModel)]="user.mjs" name="mjs" pattern="[a-zA-Z 0-9 ]+" required></textarea>
+        <small *ngIf="!user.mjs.valid && user.mjs.touched" class="text-danger ">
+          <strong>
+            Escriba un mensaje
+          </strong>
+        </small>
+      </div>
+
+
+      <div class="clearfix"></div>
+
+      <input type="submit" value="enviar" class="btn btn-btn" [disabled]="userForm.invalid">
+
+    </form>
+
+  </section>
+
+</div>
